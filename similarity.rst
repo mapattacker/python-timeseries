@@ -42,8 +42,9 @@ so that the distance will mostly be shape, rather than amplitude-related.
 
 Further Readings
 *****************
- * 1978 Dynamic programming algorithm optimization for spoken word recognition
- * 2004 FastDTW: Toward Accurate Dynamic Time Warping in Linear Time and Space
+ * (1978) Dynamic programming algorithm optimization for spoken word recognition
+ * (2004) FastDTW: Toward Accurate Dynamic Time Warping in Linear Time and Space
+
 
 SAX
 ----
@@ -53,5 +54,5 @@ and comparing between each of them.
 
 Further Readings
 *****************
- * 2003 A symbolic representation of time series, with implications for streaming algorithms
+ * (2003) A symbolic representation of time series, with implications for streaming algorithms
     
