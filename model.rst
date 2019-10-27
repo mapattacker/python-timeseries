@@ -37,6 +37,7 @@ Two inputs are crucial the model:
     dendrogram(Z, color_threshold=4000)
 
 If we have a lot of datapoints, the plotted dendrogram will look overwhelmingly cluttered, like below.
+However, setting the ``color_threshold`` helps to classify the dendrogram better by color.
 
 .. figure:: images/dendrogram1.png
     :width: 700px
