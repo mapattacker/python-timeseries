@@ -40,9 +40,7 @@ so that the distance will mostly be shape, rather than amplitude-related.
     sig2 = zscore(sig2)
     distance, path = fastdtw(sig1, sig2, dist=euclidean)
 
-Further Readings
-*****************
- 
+**Further Readings**
  * (1978) Dynamic programming algorithm optimization for spoken word recognition
  * (2004) FastDTW: Toward Accurate Dynamic Time Warping in Linear Time and Space
 
@@ -55,5 +53,5 @@ and comparing between each of them.
 
 Further Readings
 *****************
- - (2007) Experiencing SAX: a novel sym- bolic representation of time series.
+ - (2007) Experiencing SAX: a novel symbolic representation of time series.
     
