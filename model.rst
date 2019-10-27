@@ -9,7 +9,7 @@ Divisive Clustering is the opposite method of building clusters from top down,
 which is not available in sklearn. 
 This technique allows direct timeseries windows to be clustered directly.
 
-There are 3 steps to this clustering.
+There are 4 steps to this clustering.
 
 1) Model the Data
 *********************
