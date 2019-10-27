@@ -131,5 +131,5 @@ Lastly, we can plot all the individual timeseries plots within their assigned cl
 
 
 .. figure:: images/agglom3.png
-    :width: 700px
+    :width: 400px
     :align: center
