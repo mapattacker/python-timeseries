@@ -13,14 +13,15 @@ which is not available in sklearn.
 
     from scipy.cluster.hierarchy import linkage, dendrogram
 
+If we have a lot of datapoints, the plotted dendrogram will look overwhelmingly cluttered, like below.
 
 .. figure:: images/dendrogram1.png
     :width: 700px
     :align: center
 
-The dendrogram can be further prettified by truncating the bottom branches, 
+The dendrogram can be further enhanced by truncating the bottom branches, 
 labelling each cluster split distance, and adding a horizontal line to investigate where would
-be an appropriate cutoff point.
+be an appropriate cutoff point, to label each datapoint.
 
 .. figure:: images/dendrogram2.png
     :width: 500px
