@@ -10,11 +10,12 @@ intuitive distance measurements between time series by ignoring both global and
 local shifts in the time dimension.
 
 .. figure:: images/dtw.png
-    :width: 500px
+    :width: 450px
     :align: left
 
     DataBricks Blog
 
+|
 
 .. code:: python
 

@@ -12,6 +12,8 @@ This documentation collates various timeseries analyses techniques.
     :width: 600px
     :align: left
 
+|
+
 .. toctree::
    :maxdepth: 1
 
