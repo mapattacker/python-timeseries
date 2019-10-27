@@ -10,7 +10,7 @@ This documentation collates various timeseries analyses techniques.
 
 .. figure:: images/index.png
     :width: 600px
-    :align: center
+    :align: left
 
 .. toctree::
    :maxdepth: 1

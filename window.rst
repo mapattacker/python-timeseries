@@ -1,9 +1,11 @@
 Windows
 ========
 
+One of the ways to analyse timeseries is through the comparison of the data within windows.
+
 Slider
 -------
-We can use keras's ``TimeseriesGenerator`` to quickly get a window slider across a timeseries. 
+We can use keras's ``TimeseriesGenerator`` to quickly obtain a window slider across a timeseries. 
 This function is meant for RNN supervised training, hence require a y data input. 
 However, we can use ``np.zeros`` to create a dummy y data.
 
