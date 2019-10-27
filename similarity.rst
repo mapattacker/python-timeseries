@@ -41,6 +41,7 @@ so that the distance will mostly be shape, rather than amplitude-related.
     distance, path = fastdtw(sig1, sig2, dist=euclidean)
 
 Further Readings
+*****************
  * 1978 Dynamic programming algorithm optimization for spoken word recognition
  * 2004 FastDTW: Toward Accurate Dynamic Time Warping in Linear Time and Space
 
