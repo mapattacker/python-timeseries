@@ -29,3 +29,11 @@ We can use keras's ``TimeseriesGenerator`` to quickly get a window slider across
 
 Split by Period
 ---------------
+If each wave or period is consistent over time, i.e., operational hours we can split a dataframe by 
+datetime.
+
+.. code:: python
+
+    # split by each day
+    result = [group[1] for group in df.groupby(df['Timestamp'].dt.date)]
+
