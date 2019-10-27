@@ -7,7 +7,7 @@ Agglomerative Clustering is a type of *hierarchical clustering* technique
 used to build clusters from bottom up. 
 Divisive Clustering is the opposite method of building clusters from top down, 
 which is not available in sklearn. 
-This technique allows direct timeseries windows to be 
+This technique allows direct timeseries windows to be clustered directly.
 
 There are 3 steps to this clustering.
 
@@ -100,9 +100,12 @@ Finally, we assign a fixed cluster label to each datapoint, aka *flattening* the
 
     from scipy.cluster.hierarchy import fcluster
 
-    distance_threshold = 10
+    distance_threshold = 4000
     y = fcluster(Z, distance_threshold, criterion='distance')
 
-This can be done via various criteria_, one of which is using a cut of distance.
+    max_clusters = 5
+    y = fcluster(Z, max_clusters, criterion='maxclust')
+
+This can be done via various criteria_, e.g., using a cut off distance, or maximum no. of clusters.
 
 .. _criteria: https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.fcluster.html#scipy.cluster.hierarchy.fcluster
