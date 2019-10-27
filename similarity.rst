@@ -9,6 +9,13 @@ Dynamic Time Wrapping (DTW) was introduced to overcome this limitation and give
 intuitive distance measurements between time series by ignoring both global and 
 local shifts in the time dimension.
 
+.. figure:: images/dtw.png
+    :width: 500px
+    :align: left
+
+    DataBricks Blog
+
+
 .. code:: python
 
     import numpy as np
@@ -31,3 +38,5 @@ so that the distance will mostly be shape, rather than amplitude related.
     sig1 = zscore(sig1)
     sig2 = zscore(sig2)
     distance, path = fastdtw(sig1, sig2, dist=euclidean)
+
+    
