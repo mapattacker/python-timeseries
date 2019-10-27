@@ -1,5 +1,5 @@
-Windows
-========
+Window Slicing
+===============
 
 One of the ways to analyse timeseries is through the comparison of the data within windows.
 
