@@ -22,6 +22,7 @@ so do attribute them as necessary.
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    window
    featureengineering
