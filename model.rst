@@ -39,14 +39,14 @@ Two inputs are crucial the model:
 If we have a lot of datapoints, the plotted dendrogram will look overwhelmingly cluttered, like below.
 However, setting the ``color_threshold`` helps to classify the dendrogram better by color.
 
-.. figure:: images/dendrogram1.png
+.. figure:: images/agglom1.png
     :width: 700px
     :align: center
 
 The dendrogram can be further enhanced by 
  * adding title and axis labels
  * adding grids
- * trimming the bottom branches
+ * trimming the bottom branches based on max. no. of clusters to display
  * labelling each cluster split distance
  * a horizontal line to investigate where would be an appropriate cutoff point
 
@@ -85,7 +85,7 @@ The dendrogram can be further enhanced by
     line = 1500
     plt.axhline(y=line, c='black', linestyle='--');
 
-.. figure:: images/dendrogram2.png
+.. figure:: images/agglom2.png
     :width: 500px
     :align: center
 
@@ -100,12 +100,36 @@ Finally, we assign a fixed cluster label to each datapoint, aka *flattening* the
 
     from scipy.cluster.hierarchy import fcluster
 
+    # distance cutoff
     distance_threshold = 4000
     y = fcluster(Z, distance_threshold, criterion='distance')
 
+    # max no. of clusters
     max_clusters = 5
     y = fcluster(Z, max_clusters, criterion='maxclust')
 
 This can be done via various criteria_, e.g., using a cut off distance, or maximum no. of clusters.
 
 .. _criteria: https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.fcluster.html#scipy.cluster.hierarchy.fcluster
+
+
+4) Plot Timeseries
+********************
+
+Lastly, we can plot all the individual timeseries plots within their assigned clusters.
+
+.. code:: python
+
+    y = pd.DataFrame(y,columns=['y'])
+    dx=pd.concat([df.T.reset_index(drop=True), y],axis=1)
+
+    for cluster in range(1,max_cluster+1):
+        plt.figure(figsize=(5,1));
+        plt.axis('off')
+        for i in range(len(dx[dx['y']==cluster])):
+            plt.plot(dx[dx['y']==cluster].T[:-1].iloc[:,i]);
+
+
+.. figure:: images/agglom3.png
+    :width: 700px
+    :align: center
