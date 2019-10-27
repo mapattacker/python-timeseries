@@ -6,7 +6,14 @@
 Python Timeseries Analyses
 ======================================================
 
-This documentation collates various timeseries analyses techniques.
+Image, Natural Language and Timeseries analyses are unique data that cannot be analysed or modelled 
+through traditional methods. For the latter, each *row* of data might be signals or waves within 
+a window frame of time, and requires prior preprocessing or unique models to deal with this 
+additional dimensionality.
+
+This documentation collates various timeseries analyses techniques. 
+Many resources and pictures are sourced from other parties as indicated, 
+so do attribute them as necessary.
 
 .. figure:: images/index.png
     :width: 600px
