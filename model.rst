@@ -6,7 +6,8 @@ Agglomerative Clustering
 Agglomerative Clustering is a type of *hierarchical clustering* technique 
 used to build clusters from bottom up. 
 Divisive Clustering is the opposite method of building clusters from top down, 
-which is not available in sklearn.
+which is not available in sklearn. 
+This technique allows direct timeseries windows to be 
 
 There are 3 steps to this clustering.
 
@@ -44,7 +45,7 @@ If we have a lot of datapoints, the plotted dendrogram will look overwhelmingly 
 The dendrogram can be further enhanced by 
  * adding title and axis labels
  * adding grids
- * truncating the bottom branches
+ * trimming the bottom branches
  * labelling each cluster split distance
  * a horizontal line to investigate where would be an appropriate cutoff point
 
@@ -58,19 +59,22 @@ The dendrogram can be further enhanced by
     plt.xlabel('Clusters')
     plt.ylabel('Distance')
 
+    # cluster
     Z = linkage(df, method='ward', metric='euclidean')
+
     # plot dendrogram
     ddata = dendrogram(Z, orientation='top',
-                    truncate_mode='lastp', p=5,
-                    labels=True, get_leaves=True,
-                    show_leaf_counts=True,
-                    show_contracted=True)
+                        truncate_mode='lastp', p=5,
+                        labels=True, get_leaves=True,
+                        show_leaf_counts=True,
+                        show_contracted=True)
 
     # plot cluster points & distance labels
+    limit = 4
     for i, d, c in zip(ddata['icoord'], ddata['dcoord'], ddata['color_list']):
         x = sum(i[1:3])/2
         y = d[1]
-        if y > 4:
+        if y > limit:
             plt.plot(x, y, 'o', c=c, markeredgewidth=0)
             plt.annotate(int(y), (x, y), xytext=(0, -5),
                         textcoords='offset points',
