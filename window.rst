@@ -1,7 +1,7 @@
 Window Slicing
 ===============
 
-One of the ways to analyse timeseries is through the comparison of the data within windows.
+One of the ways to analyse timeseries is through the comparison of the data between windows of time.
 
 Slider
 -------
@@ -21,7 +21,7 @@ However, we can use ``np.zeros`` to create a dummy y data.
 
     win_length=17000
     win_slide=5000
-    batch=(len(sig)-win_length)/win_slide
+    batch=(len(X)-win_length)/win_slide
 
     data = TimeseriesGenerator(X, y,
                                 length=win_length,
