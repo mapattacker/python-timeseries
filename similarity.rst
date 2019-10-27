@@ -48,11 +48,11 @@ Further Readings
 
 SAX
 ----
-Developed in 2003, **Symbolic Aggregate approXimation (SAX)** compares the similarity 
+Developed in 2007, **Symbolic Aggregate approXimation (SAX)** compares the similarity 
 of two time-series patterns by slicing them into horizontal & vertical regions, 
 and comparing between each of them.
 
 Further Readings
 *****************
- * (2003) A symbolic representation of time series, with implications for streaming algorithms
+ * (2007) Experiencing SAX: a novel sym- bolic representation of time series.
     
