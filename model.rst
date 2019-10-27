@@ -18,7 +18,10 @@ which is not available in sklearn.
     :width: 700px
     :align: center
 
+The dendrogram can be further prettified by truncating the bottom branches, 
+labelling each cluster split distance, and adding a horizontal line to investigate where would
+be an appropriate cutoff point.
 
 .. figure:: images/dendrogram2.png
-    :width: 400px
+    :width: 500px
     :align: center
