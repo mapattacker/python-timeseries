@@ -5,12 +5,12 @@ DTW
 ----
 If two time series are identical, but one is shifted slightly along the time axis, 
 then Euclidean distance may consider them to be very different from each other. 
-Dynamic Time Wrapping (DTW) was introduced to overcome this limitation and give 
+**Dynamic Time Wrapping** (DTW) was introduced to overcome this limitation and give 
 intuitive distance measurements between time series by ignoring both global and 
 local shifts in the time dimension.
 
 .. figure:: images/dtw.png
-    :width: 450px
+    :width: 400px
     :align: center
 
     DataBricks Blog
