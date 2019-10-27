@@ -1,9 +1,13 @@
-Windows
-========
+Window Slicing
+===============
+
+One of the ways to analyse timeseries is through the comparison of the data within windows.
 
 Slider
 -------
-We can use keras's ``TimeseriesGenerator`` to quickly get a window slider across a timeseries.
+We can use keras's ``TimeseriesGenerator`` to quickly obtain a window slider across a timeseries. 
+This function is meant for RNN supervised training, hence require a y data input. 
+However, we can use ``np.zeros`` to create a dummy y data.
 
 .. code:: python
 
@@ -11,6 +15,7 @@ We can use keras's ``TimeseriesGenerator`` to quickly get a window slider across
 
     X = np.array(df['original'])
     y = np.zeros(len(sig))
+
 
     from keras.preprocessing.sequence import TimeseriesGenerator
 
@@ -29,3 +34,11 @@ We can use keras's ``TimeseriesGenerator`` to quickly get a window slider across
 
 Split by Period
 ---------------
+If each wave or period is consistent over time, i.e., operational hours we can split a dataframe by 
+datetime.
+
+.. code:: python
+
+    # split by each day
+    result = [group[1] for group in df.groupby(df['Timestamp'].dt.date)]
+

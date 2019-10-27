@@ -53,5 +53,5 @@ and comparing between each of them.
 
 Further Readings
 *****************
- - (2007) Experiencing SAX: a novel symbolic representation of time series.
+ - 2007 Experiencing SAX: a novel symbolic representation of time series.
     

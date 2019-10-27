@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Windows &#8212; Python Timeseries Analyses  documentation</title>
+    <title>Window Slicing &#8212; Python Timeseries Analyses  documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -15,7 +15,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Feature Engineering" href="featureengineering.html" />
-    <link rel="prev" title="Welcome to Python Timeseries Analyses’s documentation!" href="index.html" />
+    <link rel="prev" title="Python Timeseries Analyses" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -32,15 +32,19 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="windows">
-<h1>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="window-slicing">
+<h1>Window Slicing<a class="headerlink" href="#window-slicing" title="Permalink to this headline">¶</a></h1>
+<p>One of the ways to analyse timeseries is through the comparison of the data within windows.</p>
 <div class="section" id="slider">
 <h2>Slider<a class="headerlink" href="#slider" title="Permalink to this headline">¶</a></h2>
-<p>We can use keras’s <code class="docutils literal notranslate"><span class="pre">TimeseriesGenerator</span></code> to quickly get a window slider across a timeseries.</p>
+<p>We can use keras’s <code class="docutils literal notranslate"><span class="pre">TimeseriesGenerator</span></code> to quickly obtain a window slider across a timeseries.
+This function is meant for RNN supervised training, hence require a y data input.
+However, we can use <code class="docutils literal notranslate"><span class="pre">np.zeros</span></code> to create a dummy y data.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;original&#39;</span><span class="p">])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sig</span><span class="p">))</span>
+
 
 <span class="kn">from</span> <span class="nn">keras.preprocessing.sequence</span> <span class="kn">import</span> <span class="n">TimeseriesGenerator</span>
 
@@ -61,6 +65,12 @@
 </div>
 <div class="section" id="split-by-period">
 <h2>Split by Period<a class="headerlink" href="#split-by-period" title="Permalink to this headline">¶</a></h2>
+<p>If each wave or period is consistent over time, i.e., operational hours we can split a dataframe by
+datetime.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># split by each day</span>
+<span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">group</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">)]</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -82,7 +92,7 @@
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Windows</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Window Slicing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="featureengineering.html">Feature Engineering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="similarity.html">Similarity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model.html">Modelling</a></li>
@@ -92,7 +102,7 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">Welcome to Python Timeseries Analyses’s documentation!</a></li>
+      <li>Previous: <a href="index.html" title="previous chapter">Python Timeseries Analyses</a></li>
       <li>Next: <a href="featureengineering.html" title="next chapter">Feature Engineering</a></li>
   </ul></li>
 </ul>

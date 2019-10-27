@@ -14,6 +14,8 @@
     <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Modelling" href="model.html" />
+    <link rel="prev" title="Feature Engineering" href="featureengineering.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -32,6 +34,69 @@
             
   <div class="section" id="similarity">
 <h1>Similarity<a class="headerlink" href="#similarity" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dtw">
+<h2>DTW<a class="headerlink" href="#dtw" title="Permalink to this headline">¶</a></h2>
+<p>If two time series are identical, but one is shifted slightly along the time axis,
+then Euclidean distance may consider them to be very different from each other.
+Created in 1978, <strong>Dynamic Time Wrapping (DTW)</strong> was introduced to overcome this limitation and give
+intuitive distance measurements between time series by ignoring both global and
+local shifts in the time dimension.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="_images/dtw.png"><img alt="_images/dtw.png" src="_images/dtw.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">DataBricks Blog</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>FastDTW is a faster implementation of DTW.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">euclidean</span>
+<span class="kn">from</span> <span class="nn">fastdtw</span> <span class="kn">import</span> <span class="n">fastdtw</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+<span class="n">distance</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="n">fastdtw</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="n">euclidean</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There are many variants of DTW. An example is to first normalize both signals before running DTW
+so that the distance will mostly be shape, rather than amplitude-related.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">zscore</span>
+<span class="kn">from</span> <span class="nn">fastdtw</span> <span class="kn">import</span> <span class="n">fastdtw</span>
+
+<span class="n">sig1</span> <span class="o">=</span> <span class="n">zscore</span><span class="p">(</span><span class="n">sig1</span><span class="p">)</span>
+<span class="n">sig2</span> <span class="o">=</span> <span class="n">zscore</span><span class="p">(</span><span class="n">sig2</span><span class="p">)</span>
+<span class="n">distance</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="n">fastdtw</span><span class="p">(</span><span class="n">sig1</span><span class="p">,</span> <span class="n">sig2</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="n">euclidean</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Further Readings</strong></dt><dd><ul class="simple">
+<li><ol class="arabic simple" start="1978">
+<li><p>Dynamic programming algorithm optimization for spoken word recognition</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2004">
+<li><p>FastDTW: Toward Accurate Dynamic Time Warping in Linear Time and Space</p></li>
+</ol>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="sax">
+<h2>SAX<a class="headerlink" href="#sax" title="Permalink to this headline">¶</a></h2>
+<p>Developed in 2007, <strong>Symbolic Aggregate approXimation (SAX)</strong> compares the similarity
+of two time-series patterns by slicing them into horizontal &amp; vertical regions,
+and comparing between each of them.</p>
+<div class="section" id="further-readings">
+<h3>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><ol class="arabic simple" start="2007">
+<li><p>Experiencing SAX: a novel symbolic representation of time series.</p></li>
+</ol>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
 </div>
 
 
@@ -51,11 +116,19 @@
 
 
 <h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="window.html">Window Slicing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="featureengineering.html">Feature Engineering</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">Modelling</a></li>
+</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="featureengineering.html" title="previous chapter">Feature Engineering</a></li>
+      <li>Next: <a href="model.html" title="next chapter">Modelling</a></li>
   </ul></li>
 </ul>
 </div>
