@@ -18,9 +18,9 @@ There are 3 steps to this clustering.
     from scipy.cluster.hierarchy import linkage, dendrogram
     Z = linkage(df, method='ward', metric='euclidean')
 
-Two inputs are crucial the model, method_ which refers 
-to the method of calculating the distance between each clusters, as well as metric_,
-the algorithm to calculate distance between each datapoint.
+Two inputs are crucial the model:
+ * method_ which refers to the method of calculating the distance between each clusters
+ * metric_ the algorithm to calculate distance between each datapoint
 
 .. _method: https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.linkage.html#scipy.cluster.hierarchy.linkage
 .. _metric: https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.pdist.html#scipy.spatial.distance.pdist
