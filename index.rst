@@ -8,6 +8,10 @@ Python Timeseries Analyses
 
 This documentation collates various timeseries analyses techniques.
 
+.. figure:: images/index.png
+    :width: 600px
+    :align: center
+
 .. toctree::
    :maxdepth: 1
 

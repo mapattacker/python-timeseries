@@ -3,7 +3,9 @@ Windows
 
 Slider
 -------
-We can use keras's ``TimeseriesGenerator`` to quickly get a window slider across a timeseries.
+We can use keras's ``TimeseriesGenerator`` to quickly get a window slider across a timeseries. 
+This function is meant for RNN supervised training, hence require a y data input. 
+However, we can use ``np.zeros`` to create a dummy y data.
 
 .. code:: python
 
@@ -11,6 +13,7 @@ We can use keras's ``TimeseriesGenerator`` to quickly get a window slider across
 
     X = np.array(df['original'])
     y = np.zeros(len(sig))
+
 
     from keras.preprocessing.sequence import TimeseriesGenerator
 
