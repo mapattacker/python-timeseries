@@ -11,7 +11,7 @@ local shifts in the time dimension.
 
 .. figure:: images/dtw.png
     :width: 450px
-    :align: left
+    :align: centre
 
     DataBricks Blog
 
