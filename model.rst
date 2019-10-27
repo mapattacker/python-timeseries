@@ -84,6 +84,7 @@ The dendrogram can be further enhanced by
     :width: 500px
     :align: center
 
+The labels in brackets is the number of datapoints that are clustered under each branch.
 
 3) Assign Cluster Labels
 *************************
@@ -97,6 +98,6 @@ Finally, we assign a fixed cluster label to each datapoint, aka *flattening* the
     distance_threshold = 10
     y = fcluster(Z, distance_threshold, criterion='distance')
 
-This can be done via various criteria_ , one of which is using a cut of distance.
+This can be done via various criteria_, one of which is using a cut of distance.
 
-.. _criterion: https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.fcluster.html#scipy.cluster.hierarchy.fcluster
+.. _criteria: https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.fcluster.html#scipy.cluster.hierarchy.fcluster
