@@ -24,13 +24,14 @@ If we have a lot of datapoints, the plotted dendrogram will look overwhelmingly 
 
 The dendrogram can be further enhanced by 
  * adding title and axis labels
+ * adding grids
  * truncating the bottom branches
  * labelling each cluster split distance
  * a horizontal line to investigate where would be an appropriate cutoff point
 
 .. code:: python
 
-from scipy.cluster.hierarchy import linkage, dendrogram
+    from scipy.cluster.hierarchy import linkage, dendrogram
 
     plt.style.use('seaborn-whitegrid')
     plt.figure(figsize=(8, 5))
