@@ -21,7 +21,7 @@ Many resources and pictures are sourced from other parties as indicated,
 so do attribute them as necessary.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :hidden:
 
    window
