@@ -173,6 +173,6 @@ within their assigned clusters beside the dendrogram.
 
 
 .. figure:: images/agglom3.png
-    :width: 300px
+    :width: 600px
     :align: center
 
