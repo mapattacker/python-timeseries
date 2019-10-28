@@ -210,6 +210,9 @@ github repository_.
 
         plt.tight_layout()
 
+    plt.figure(figsize=(8,5));
+    maxclust_draw(df.T, 'ward', 'euclidean', 5, 1)
+
 
 .. figure:: images/agglom3.png
     :width: 600px
