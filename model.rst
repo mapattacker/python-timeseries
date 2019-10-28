@@ -116,18 +116,60 @@ This can be done via various criteria_, e.g., using a cut off distance, or maxim
 4) Plot Timeseries by Cluster
 *****************************
 
-Lastly, we can plot all the individual timeseries plots within their assigned clusters.
+If the dataset is in timseries windows, we can plot all the individual timeseries plots 
+within their assigned clusters beside the dendrogram.
 
 .. code:: python
-    clusters = np.unique(y)
+    
+    from scipy.cluster.hierarchy import linkage, dendrogram, fcluster
+    import matplotlib.gridspec as gridspec
+
+    plt.style.use('seaborn-whitegrid')
+    plt.figure(figsize=(8, 6))
+
+    max_cluster=8
+    space=2
+
+    gs = gridspec.GridSpec(max_cluster,max_cluster)
+
+    plt.subplot(gs[:, 0:max_cluster-space])
+    # plt.title('Agglomerative Clustering Dendrogram')
+    plt.xlabel('Distance')
+    plt.ylabel('Cluster')
+
+    Z = linkage(df.T.fillna(0), method='ward', metric='euclidean')
+    ddata = dendrogram(Z, orientation='left',
+    #                    color_threshold=4000,
+                    truncate_mode='lastp', p=max_cluster,
+                    labels=True, get_leaves=True,
+                    show_leaf_counts=True,
+                    show_contracted=True)
+
+    # plot cluster points & distance labels    
+    for i, d, c in zip(ddata['icoord'], ddata['dcoord'], ddata['color_list']):
+        x = sum(i[1:3])/2
+        y = d[1]
+        if y > 4:
+            plt.plot(y, x, 'o', c=c, markeredgewidth=0)
+            plt.annotate(int(y), (y, x), xytext=(15, 3),
+                        textcoords='offset points',
+                        va='top', ha='center', fontsize=8)
+
+    # get cluster labels
+    y = fcluster(Z, max_cluster, criterion='maxclust')
     y = pd.DataFrame(y,columns=['y'])
+    # merge with original dataset
     dx=pd.concat([df.T.reset_index(drop=True), y],axis=1)
 
-    for cluster in range(1, clusters+1):
-        plt.figure(figsize=(5,1));
+    # add timeseries graphs to the right
+    for cluster in range(1,max_cluster+1):
+        reverse_plot = max_cluster+1-cluster
+        plt.subplot(gs[reverse_plot-1:reverse_plot,max_cluster-space:max_cluster])
         plt.axis('off')
         for i in range(len(dx[dx['y']==cluster])):
             plt.plot(dx[dx['y']==cluster].T[:-1].iloc[:,i]);
+
+    plt.tight_layout()
 
 
 .. figure:: images/agglom3.png
