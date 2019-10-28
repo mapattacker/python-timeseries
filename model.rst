@@ -113,17 +113,17 @@ This can be done via various criteria_, e.g., using a cut off distance, or maxim
 .. _criteria: https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.fcluster.html#scipy.cluster.hierarchy.fcluster
 
 
-4) Plot Timeseries
-********************
+4) Plot Timeseries by Cluster
+*****************************
 
 Lastly, we can plot all the individual timeseries plots within their assigned clusters.
 
 .. code:: python
-
+    clusters = np.unique(y)
     y = pd.DataFrame(y,columns=['y'])
     dx=pd.concat([df.T.reset_index(drop=True), y],axis=1)
 
-    for cluster in range(1,max_cluster+1):
+    for cluster in range(1, clusters+1):
         plt.figure(figsize=(5,1));
         plt.axis('off')
         for i in range(len(dx[dx['y']==cluster])):
@@ -133,3 +133,4 @@ Lastly, we can plot all the individual timeseries plots within their assigned cl
 .. figure:: images/agglom3.png
     :width: 300px
     :align: center
+
